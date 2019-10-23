@@ -1,0 +1,99 @@
+<ion-content>
+  <div class="container">
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <div>
+        <h3>Complete los datos requeridos</h3>
+      </div>
+      <div class="panel panel-info"> 
+        <div class="panel-body" >
+          <form method="post" action=".">
+            <form  class="form-horizontal" method="post" >
+              <div id="div_id_username" class="form-group required">
+                <label for="id_username" class="control-label col-md-4  requiredField"> Apodo<span class="asteriskField">*</span> </label>
+                <div class="controls col-md-8 ">
+                  <input [(ngModel)]="user.nickName" class="input-md  textinput textInput form-control" id="id_username" maxlength="30" name="username" placeholder="Elija su apodo" style="margin-bottom: 10px" type="text" />
+                </div>
+              </div>
+              <div id="div_id_name" class="form-group required"> 
+                <label for="id_name" class="control-label col-md-4  requiredField"> Nombre<span class="asteriskField">*</span> </label> 
+                <div class="controls col-md-8 "> 
+                  <input [(ngModel)]="user.name" class="input-md textinput textInput form-control" id="id_name" name="name" placeholder="Primer nombre" style="margin-bottom: 10px" type="text" />
+                </div>
+              </div>
+              <div id="div_id_surname" class="form-group required"> 
+                <label for="id_surname" class="control-label col-md-4  requiredField"> Apellido<span class="asteriskField">*</span> </label> 
+                <div class="controls col-md-8 "> 
+                  <input [(ngModel)]="user.surname" class="input-md textinput textInput form-control" id="id_surname" name="surname" placeholder="Primer Apellido" style="margin-bottom: 10px" type="text" />
+                </div>
+              </div>
+              <div id="div_id_surname" class="form-group required"> 
+                <label for="id_surname" class="control-label col-md-4  requiredField"> RUN<span class="asteriskField">*</span> </label> 
+                <div class="controls col-md-8 "> 
+                  <input [(ngModel)]="user.run" class="input-md textinput textInput form-control" id="id_surname" name="surname" placeholder="R.U.N" style="margin-bottom: 10px" type="text" />
+                </div>
+              </div>
+              <div id="div_id_gender" class="form-group required">
+                <label for="id_gender"  class="control-label col-md-4  requiredField"> Género<span class="asteriskField">*</span> </label>
+                <select class="custom-select" [(ngModel)]="user.gender" name="gender">
+                  <option value="H">Hombre</option>
+                  <option value="M">Mujer</option>
+                </select>
+              </div>
+              <!--div id="div_id_gender" class="form-group required">
+                <label for="id_gender"  class="control-label col-md-4  requiredField"> Genero<span class="asteriskField">*</span> </label>
+                <div class="controls col-md-8 "  style="margin-bottom: 10px">
+                  <label class="radio-inline"> <input type="radio" name="gender" id="id_gender_1" value="M"  style="margin-bottom: 10px">Hombre</label>
+                  <label class="radio-inline"> <input type="radio" name="gender" id="id_gender_2" value="F"  style="margin-bottom: 10px">Mujer </label>
+                </div>
+              </div-->
+              <div id="div_id_number" class="form-group required">
+                <label for="id_number" class="control-label col-md-4  requiredField"> Número de contacto<span class="asteriskField">*</span> (9 dígitos)</label>
+                <div class="controls col-md-8 ">
+                  <input class="input-md textinput textInput form-control" id="id_number" name="number" maxlength="9" placeholder="Ingrese su número de contacto" style="margin-bottom: 10px" type="text" />
+                </div> 
+              </div> 
+              <div id="div_id_location" class="form-group required">
+                <label for="id_location" class="control-label col-md-4  requiredField"> Su ciudad<span class="asteriskField">*</span> </label>
+                <div class="controls col-md-8 ">
+                    <input class="input-md textinput textInput form-control" id="id_location" name="location" placeholder="Ingrese su ciudad" style="margin-bottom: 10px" type="text" />
+                </div> 
+              </div>
+              <!--div class="form-group required controls col-md-offset-4 col-md-8"-->
+                <!--div class="controls col-md-offset-4 col-md-8 "-->
+                  <ion-item id="div_id_terms" class="checkbox required controls col-md-offset-4 col-md-8">
+                    <ion-label style="margin-bottom: 8px">
+                      <p>Acepto los terminos y <br>condiciones del curso.</p>
+                    </ion-label>
+                    <ion-checkbox [(ngModel)]="terms" name="terms" (ionChange)="setTerms()"></ion-checkbox>  
+                  </ion-item>
+                  <div class="col-md-offset-4 col-md-8">
+                    <button ion-button small block round (click)="getTerms()">lea los términos y condiciones</button>
+                  </div>
+                  <br>
+                <!--/div-->
+              <!--/div-->
+              <!--div class="form-group">
+                <div class="controls col-md-offset-4 col-md-8 ">
+                  <div id="div_id_terms" class="checkbox required">
+                    <label for="id_terms" class=" requiredField">
+                      <input [(ngModel)]="terms" (ionChange)="setTerms()" class="input-ms checkboxinput" id="id_terms" name="terms" style="margin-bottom: 10px" type="checkbox" />
+                      Acepto los terminos y condiciones del curso.
+                    </label>
+                  </div>
+                </div>
+              </div--> 
+              <div class="form-group"> 
+                <div class="aab controls col-md-4 "></div>
+                <div class="controls col-md-8 ">
+                  <button ion-button block round color="primary" (click)="continue()">Continuar</button>
+                    <!--input type="submit" name="Signup" value="Signup" class="btn btn-primary btn btn-info" id="submit-id-signup" /-->
+                </div>
+              </div> 
+            </form>
+
+          </form>
+        </div>
+      </div>
+    </div> 
+  </div>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-content padding>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="./assets/imgs/logo.png" id="icon" alt="User Icon" />
+        <div align="center">
+          <h2>Ztudy</h2>
+        </div>
+      </div>
+  
+      <!-- Login Form -->
+      <form>
+        <input type="email" id="login" class="fadeIn second" name="login" placeholder="login" [(ngModel)]="user.email">
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" [(ngModel)]="password">
+        <input type="submit" class="fadeIn fourth" value="Log In" (click)="login()">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" (click)="toForgotPasswordPage()">Forgot Password?</a>
+      </div>
+  
+    </div>
+  </div>
+</ion-content>
