@@ -16,4 +16,13 @@ page-user-data {
             font-size: 12px;
             text-align: justify;        }
     }
+
+    .form-control {
+        font-size: 1.8rem;
+    }
+
+    .custom-select {
+        height: calc(2.25rem + 10px);
+        font-size: 1.8rem;
+    }
 }

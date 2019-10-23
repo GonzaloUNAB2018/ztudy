@@ -49,7 +49,6 @@ export class UserDataPage {
           text: 'Descargar',
           handler: () => {
             this.downloadPDF();
-            alert.dismiss();
           }
         }
       ]
@@ -58,10 +57,10 @@ export class UserDataPage {
   };
 
   downloadPDF(){
-    this.fileOpener.open('./../files/terminos_y_condiciones_del_curso.pdf', 'application/pdf')
+    /*this.fileOpener.open('https://github.com/GonzaloUNAB2018/ztudy/raw/master/src/files/terminos_y_condiciones_del_curso.pdf', 'application/pdf')
     .then(() => console.log('File is opened'))
-    .catch(e => console.log('Error opening file', e));
-    //window.open('./../files/terminos_y_condiciones_del_curso.pdf');
+    .catch(e => console.log('Error opening file', e));*/
+    window.open('https://github.com/GonzaloUNAB2018/ztudy/raw/master/src/files/terminos_y_condiciones_del_curso.pdf');
   };
 
 }
