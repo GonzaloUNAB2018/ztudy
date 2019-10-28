@@ -60,6 +60,4 @@ export class LoginPage {
     this.navCtrl.push(ForgotPasswordPage);
   }
 
-
-
 }
