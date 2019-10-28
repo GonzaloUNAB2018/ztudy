@@ -49,6 +49,8 @@ export class LoginPage {
       }
     }).catch(e=>{
       console.log(e);
+      alert(e);
+      load.dismiss();
     })
   }
 
