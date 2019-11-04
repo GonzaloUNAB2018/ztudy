@@ -6,4 +6,4 @@ export const firebase = {
     storageBucket: "ztudy-cl.appspot.com",
     messagingSenderId: "800581680351",
     appId: "1:800581680351:web:f7ab4639a8f6c22d2d7d6a"
-};
+}
