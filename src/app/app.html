@@ -1,1 +1,27 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<!--ion-nav [root]="rootPage"></ion-nav-->
+<ion-split-pane>
+    <ion-menu [content]="content" overflow-scroll="false">
+        <ion-header>
+        <ion-toolbar color="secondary">
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+        </ion-header>
+    
+        <ion-content scrollbar-y-auto>
+        <ion-list>
+            <button ion-item menuClose><ion-icon name="map"></ion-icon> Curso Práctico</button>
+            <button ion-item menuClose><ion-icon name="book"></ion-icon> Exámenes</button>
+            <button ion-item menuClose><ion-icon name="checkmark"></ion-icon> Notas</button>
+            <button ion-item menuClose><ion-icon name="mail"></ion-icon> Contacto Profesor</button>
+            <ion-item-divider></ion-item-divider>
+            <button ion-item menuClose><ion-icon name="list"></ion-icon> Datos Prsonales</button>
+            <button ion-item menuClose><ion-icon name="create"></ion-icon> Editar Datos</button>
+            <ion-item-divider></ion-item-divider>
+            <button ion-item menuClose (click)="logout()"><ion-icon name="power"></ion-icon> Salir</button>
+        </ion-list>
+        </ion-content>
+    
+    </ion-menu>
+    
+    <ion-nav [root]="rootPage" main #content></ion-nav>
+</ion-split-pane>

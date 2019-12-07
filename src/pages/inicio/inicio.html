@@ -1,0 +1,107 @@
+<!--
+  Generated template for the InicioPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>TRADUSTECH</ion-title>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content>
+  <div class="banner">
+    <p class="dashboard">DASHBOARD</p>
+  </div>
+  <div class="wait" *ngIf="!gender_letra">
+    <div align="center" class="lds-facebook"><div></div><div></div><div></div></div>
+  </div>
+  <div *ngIf="gender_letra">
+    <div padding-left padding-right>
+      <h1>Bienvenid{{gender_letra}} {{fbUser}}</h1>
+    </div>
+    <ion-grid padding>
+      <ion-row>
+        <ion-col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4>
+          <div align="center">
+            <ion-card class="image-card">
+              <img class="image-profile" src="./assets/imgs/user.jpg">
+            </ion-card>
+          </div>
+        </ion-col>
+        <ion-col col-12 col-sm-12 col-md-6 col-lg-3 col-xl-4>
+          <ion-card >
+            <div margin>
+              <h1>Alumn{{gender_letra}}</h1>
+              <br>
+              <h1> {{(user|async)?.name}} {{(user|async)?.surname}} </h1>
+              <h2> {{(user|async)?.phone}} </h2>
+              <h2> {{email}} </h2>
+              <br>
+              <h4>Localidad: </h4>
+              <h3> {{(user|async)?.city}} </h3>
+            </div>
+          </ion-card>
+        </ion-col>
+        <ion-col col-12 col-sm-12 col-md-12 col-lg-5 col-xl-4>
+          <div align="center">
+            <ion-card class="calendar">
+              <div padding-top>
+                <h2>18, Sunday</h2>
+                <h3>November</h3>
+              </div>
+              <div class="calendar__date">
+                <div class="calendar__day">M</div>
+                <div class="calendar__day">T</div>
+                <div class="calendar__day">W</div>
+                <div class="calendar__day">T</div>
+                <div class="calendar__day">F</div>
+                <div class="calendar__day">S</div>
+                <div class="calendar__day">S</div>
+                <div class="calendar__number"></div>
+                <div class="calendar__number"></div>
+                <div class="calendar__number"></div>
+                <div class="calendar__number">1</div>
+                <div class="calendar__number">2</div>
+                <div class="calendar__number">3</div>
+                <div class="calendar__number">4</div>
+                <div class="calendar__number">5</div>
+                <div class="calendar__number">6</div>
+                <div class="calendar__number">7</div>
+                <div class="calendar__number">8</div>
+                <div class="calendar__number">9</div>
+                <div class="calendar__number">10</div>
+                <div class="calendar__number">11</div>
+                <div class="calendar__number">12</div>
+                <div class="calendar__number">13</div>
+                <div class="calendar__number">14</div>
+                <div class="calendar__number">15</div>
+                <div class="calendar__number">16</div>
+                <div class="calendar__number">17</div>
+                <div class="calendar__number calendar__number--current">18</div>
+                <div class="calendar__number">19</div>
+                <div class="calendar__number">20</div>
+                <div class="calendar__number">21</div>
+                <div class="calendar__number">22</div>
+                <div class="calendar__number">23</div>
+                <div class="calendar__number">24</div>
+                <div class="calendar__number">25</div>
+                <div class="calendar__number">26</div>
+                <div class="calendar__number">27</div>
+                <div class="calendar__number">28</div>
+                <div class="calendar__number">29</div>
+                <div class="calendar__number">30</div>
+              </div>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -20,6 +20,7 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { AngularFireProvider } from '../providers/angular-fire/angular-fire';
 import { HttpClientModule } from '@angular/common/http';
 import { UserDataPage } from '../pages/user-data/user-data';
+import { InicioPage } from '../pages/inicio/inicio';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserDataPage } from '../pages/user-data/user-data';
     LoginPage,
     DashboardPage,
     ForgotPasswordPage,
-    UserDataPage
+    UserDataPage,
+    InicioPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { UserDataPage } from '../pages/user-data/user-data';
     LoginPage,
     DashboardPage,
     ForgotPasswordPage,
-    UserDataPage
+    UserDataPage,
+    InicioPage
   ],
   providers: [
     StatusBar,

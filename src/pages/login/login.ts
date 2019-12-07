@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ForgotPasswordPage } from '../forgot-password/forgot-password';
 import { User } from '../../modal/user';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireProvider } from '../../providers/angular-fire/angular-fire';
-import { UserDataPage } from '../user-data/user-data';
+import { InicioPage } from '../inicio/inicio';
+//import { AngularFireProvider } from '../../providers/angular-fire/angular-fire';
 
 @IonicPage()
 @Component({
@@ -22,9 +22,11 @@ export class LoginPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private afAuth: AngularFireAuth,
-    private afProvider: AngularFireProvider,
-    public loadCtrl: LoadingController
+    //private afProvider: AngularFireProvider,
+    public loadCtrl: LoadingController,
+    public menuCtrl: MenuController
     ) {
+      this.menuCtrl.enable(false)
   }
 
   ionViewDidLoad() {
@@ -39,19 +41,25 @@ export class LoginPage {
     this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.password).then(user=>{
       if(user){
         this.fbUserName = this.afAuth.auth.currentUser.displayName;
-        if(this.fbUserName===null){
-          this.navCtrl.setRoot(UserDataPage);
-          load.dismiss();
-        }else{
+        if(this.fbUserName === null){
+          console.log(this.fbUserName);
           this.toHomePage();
           load.dismiss();
-        };
-      }
+        }else{
+          console.log(this.fbUserName);
+          this.toInicioPage();
+          load.dismiss();
+        }
+      };
     }).catch(e=>{
       console.log(e);
       alert(e);
       load.dismiss();
     })
+  }
+
+  toInicioPage(){
+    this.navCtrl.setRoot(InicioPage);
   }
 
   toHomePage(){

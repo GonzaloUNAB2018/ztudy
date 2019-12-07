@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, LoadingController } from 'ionic-angular';
+import { UserDataPage } from '../user-data/user-data';
 declare var require: any;
 const jQuery = require('jquery');
 
@@ -10,10 +11,15 @@ const jQuery = require('jquery');
 export class HomePage {
 
   android: boolean;
+  image: string = null;
+  nextbutton: boolean = false;
+  backButton: boolean = false;
+  n : number = 0;
 
   constructor(
     public navCtrl: NavController,
-    public platform: Platform
+    public platform: Platform,
+    public loadCtrl: LoadingController
     ) {
 
       if(this.platform.is('android')){
@@ -21,40 +27,46 @@ export class HomePage {
       }else{
         this.android = false;
       }
-      this.jQ();
 
+      //document.getElementById(this.n.toString());
+      setTimeout(() => {
+        this.image = './assets/imgs/personajes/ALEX/ALEX.jpg';
+        setTimeout(() => {
+          this.nextbutton = true;
+        }, 2000);
+      }, 2000);
   }
 
-  jQ(){
-    jQuery(($) => {
-      $('.sidebar-dropdown > a').click(function() {
-    $('.sidebar-submenu').slideUp(200);
-    if (
-      $(this)
-        .parent()
-        .hasClass('active')
-    ) {
-      $('.sidebar-dropdown').removeClass('active');
-      $(this)
-        .parent()
-        .removeClass('active');
-    } else {
-      $('.sidebar-dropdown').removeClass('active');
-      $(this)
-        .next('.sidebar-submenu')
-        .slideDown(200);
-      $(this)
-        .parent()
-        .addClass('active');
+  next(){
+    this.n = this.n + 1;
+    //document.getElementById(this.n.toString());
+    this.nextbutton = false;
+    this.backButton = false;
+    setTimeout(() => {
+      this.nextbutton = true;
+      this.backButton = true;
+    }, 2000);
+  }
+
+  back(){
+    this.n = this.n - 1;
+    if(this.n===0){
+      this.backButton=false;
     }
-  });
-      $('#close-sidebar').click(() => {
-    $('.page-wrapper').removeClass('toggled');
-  });
-      $('#show-sidebar').click(() => {
-    $('.page-wrapper').addClass('toggled');
-  });
-  });
   }
+
+  form(){
+    let load = this.loadCtrl.create({
+      content: 'Loading Form',
+      duration: 2000
+    });
+    load.present();
+    load.onDidDismiss(()=>{
+      this.navCtrl.setRoot(UserDataPage);
+    });
+    
+  }
+
+  
 
 }

@@ -10,4 +10,5 @@ export class User {
     onLine: number;
     typeUser: number;
     gender: string;
+    city: string;
 }

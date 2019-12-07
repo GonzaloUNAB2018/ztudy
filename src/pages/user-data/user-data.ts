@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { User } from '../../modal/user';
-import { FileOpener } from '@ionic-native/file-opener';
+//import { FileOpener } from '@ionic-native/file-opener';
+import { AngularFireProvider } from '../../providers/angular-fire/angular-fire';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { InicioPage } from '../inicio/inicio';
 
 @IonicPage()
 @Component({
@@ -11,14 +14,19 @@ import { FileOpener } from '@ionic-native/file-opener';
 export class UserDataPage {
 
   user = {} as User;
-  terms: boolean = false
+  terms: boolean = false;
+  uid: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    private fileOpener: FileOpener
+    //private fileOpener: FileOpener,
+    public loadCtrl: LoadingController,
+    private afProvider: AngularFireProvider,
+    private afAuth: AngularFireAuth
     ) {
+      this.uid = this.afAuth.auth.currentUser.uid;
   }
 
   ionViewDidLoad() {
@@ -33,7 +41,40 @@ export class UserDataPage {
     if(this.terms===false){
       alert('Acepte los terminos y condiciones del curso para continuar')
     }else if(this.terms===true){
-      alert('Continue')
+      if(
+        this.user.nickName&&
+        this.user.name&&
+        this.user.surname&&
+        this.user.run&&
+        this.user.gender&&
+        this.user.phone&&
+        this.user.city
+        ){
+          let load = this.loadCtrl.create({
+            content : 'Guardando Datos'
+          });
+          load.present().then(()=>{
+            this.afProvider.createUserStudentData(this.uid, this.user);
+            this.afAuth.auth.currentUser.updateProfile({
+              displayName: this.user.nickName
+            }).then(()=>{
+              this.navCtrl.setRoot(InicioPage).then(()=>{
+                load.dismiss();
+              }).catch(e=>{
+                console.log(e);
+                alert(e)
+              })
+            }).catch(e=>{
+              console.log(e);
+              alert(e)
+            })
+          }).catch(e=>{
+            console.log(e);
+            alert(e)
+          })
+        }else{
+          alert('Faltan datos');
+        }
     }
   }
 

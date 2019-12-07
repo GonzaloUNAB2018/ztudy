@@ -13,11 +13,13 @@ export class AngularFireProvider {
   }
 
   public readUserData(uid){
-    return this.afDb.object('User/Students/'+uid+'/Data')
+    return this.afDb.object('Users/Students/'+uid+'/Data')
   }
 
   public createUserStudentData(uid, user){
     this.afDb.database.ref('Users/Students/'+uid+'/Data').set(user);
   }
+
+  
 
 }
